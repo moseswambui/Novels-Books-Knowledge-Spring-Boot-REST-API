@@ -40,7 +40,7 @@ public class BookService {
         bookRepository.delete(book);
     }
 
-    @GetMapping("/all")
+
     public List<Book> getAllBooks(){
         return bookRepository.findAll();
     }
