@@ -19,4 +19,5 @@ public class BookRequest {
     private String language;
     private Date publishDate;
     private int page;
+    private Long authorId;
 }

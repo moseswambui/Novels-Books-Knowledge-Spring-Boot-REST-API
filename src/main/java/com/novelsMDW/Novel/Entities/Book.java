@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -38,4 +40,12 @@ public class Book {
     private Author author;
 
     private int page;
+
+    @ElementCollection
+    @CollectionTable(name = "libraries", joinColumns = @JoinColumn(name = "author_id"))
+    @Column(name = "libraries")
+    private Set<String> libraries = new HashSet<>();
+
+    @Transient
+    private int bookAge;
 }
