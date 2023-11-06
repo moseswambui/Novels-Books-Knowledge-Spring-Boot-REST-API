@@ -16,7 +16,6 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-
     @PostMapping("/add")
     public Book addBook(@RequestBody BookRequest bookRequest){
         return bookService.addBook(bookRequest);
@@ -34,6 +33,11 @@ public class BookController {
     @GetMapping("/all")
     public List<Book> getAllBooks(){
         return  bookService.getAllBooks();
+    }
+
+    @GetMapping("/search")
+    public List<Book> searchBookByName(@RequestParam String name){
+        return  bookService.findBooksByName(name);
     }
 
 }
