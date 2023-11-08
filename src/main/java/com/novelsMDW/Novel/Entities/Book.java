@@ -35,7 +35,7 @@ public class Book {
 
     private Date publishDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "authorId")
     private Author author;
 

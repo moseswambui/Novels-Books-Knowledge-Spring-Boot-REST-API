@@ -28,6 +28,7 @@ public class BookService {
         book.setLanguage(bookRequest.getLanguage());
         book.setPublishDate(bookRequest.getPublishDate());
         book.setPage(bookRequest.getPage());
+        book.setAuthor(bookRequest.getAuthor());
 
         Book savedBook = bookRepository.save(book);
 

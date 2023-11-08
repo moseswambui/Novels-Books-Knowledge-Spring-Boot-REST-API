@@ -1,5 +1,6 @@
 package com.novelsMDW.Novel.requests;
 
+import com.novelsMDW.Novel.Entities.Author;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,5 @@ public class BookRequest {
     private String language;
     private Date publishDate;
     private int page;
-    private Long authorId;
+    private Author author;
 }
