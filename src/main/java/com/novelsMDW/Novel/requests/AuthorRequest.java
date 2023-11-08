@@ -1,5 +1,6 @@
 package com.novelsMDW.Novel.requests;
 
+import com.novelsMDW.Novel.Entities.Author;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,6 @@ public class AuthorRequest {
     private String email;
     private String biography;
     private Date birthDate;
+
 
 }

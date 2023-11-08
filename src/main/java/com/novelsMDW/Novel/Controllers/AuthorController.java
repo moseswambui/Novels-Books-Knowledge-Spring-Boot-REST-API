@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/author")
 @RequiredArgsConstructor
@@ -23,9 +25,13 @@ public class AuthorController {
     public Author getAuthor(@PathVariable Long id){
         return authorService.getAuthorById(id);
     }
-
     @DeleteMapping("/{id}")
     public void deleteAuthor(@PathVariable Long id){
         authorService.deleteAuthor(id);
+    }
+
+    @GetMapping("/search")
+    public List<Author> findAuthorsByName(@RequestParam String name){
+        return authorService.findAuthorsByName(name);
     }
 }
