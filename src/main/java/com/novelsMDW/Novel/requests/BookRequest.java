@@ -1,6 +1,7 @@
 package com.novelsMDW.Novel.requests;
 
 import com.novelsMDW.Novel.Entities.Author;
+import com.novelsMDW.Novel.Entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,6 @@ public class BookRequest {
     private Date publishDate;
     private int page;
     private Author author;
+    private Category category;
+    private String library;
 }

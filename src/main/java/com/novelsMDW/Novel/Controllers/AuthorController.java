@@ -5,6 +5,7 @@ import com.novelsMDW.Novel.Service.AuthorService;
 import com.novelsMDW.Novel.requests.AuthorRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +31,18 @@ public class AuthorController {
         authorService.deleteAuthor(id);
     }
 
-    @GetMapping("/search")
+    @GetMapping(value = "/search", produces = "application/json")
     public List<Author> findAuthorsByName(@RequestParam String name){
         return authorService.findAuthorsByName(name);
+    }
+
+    @GetMapping("search-author")
+    public ResponseEntity<List<Author>> findAuthorByName(@RequestParam String name){
+        List<Author> authors = authorService.findAuthorsByName(name);
+        if (authors.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Return 204 No Content if no authors found.
+        } else {
+            return ResponseEntity.ok(authors); // Return 200 OK with the list of authors.
+        }
     }
 }

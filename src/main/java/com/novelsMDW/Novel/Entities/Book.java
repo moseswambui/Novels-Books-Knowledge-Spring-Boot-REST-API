@@ -1,5 +1,7 @@
 package com.novelsMDW.Novel.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +25,9 @@ public class Book {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
+    @JsonBackReference
     private Category category;
 
     private String description;
@@ -35,8 +38,9 @@ public class Book {
 
     private Date publishDate;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "authorId")
+    @JsonBackReference // Use this annotation to indicate that this is the non-owning side of the relationship
     private Author author;
 
     private int page;
