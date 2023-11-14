@@ -45,4 +45,8 @@ public class AuthorService {
     public List<Author> findAuthorsByName(String name){
         return authorRepository.findAuthorsByName(name);
     }
+
+    public List<Author> getAllAuthors(){
+        return authorRepository.findAll();
+    }
 }
