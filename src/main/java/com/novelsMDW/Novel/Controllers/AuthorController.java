@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/author")
 @RequiredArgsConstructor
@@ -44,5 +44,10 @@ public class AuthorController {
         } else {
             return ResponseEntity.ok(authors); // Return 200 OK with the list of authors.
         }
+    }
+
+    @GetMapping("/all")
+    public List<Author> getAllAuthors(){
+        return authorService.getAllAuthors();
     }
 }
