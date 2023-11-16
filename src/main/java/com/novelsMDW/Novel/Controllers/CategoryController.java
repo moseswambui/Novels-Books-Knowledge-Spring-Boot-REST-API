@@ -3,10 +3,11 @@ package com.novelsMDW.Novel.Controllers;
 import com.novelsMDW.Novel.Entities.Category;
 import com.novelsMDW.Novel.Service.CategoryService;
 import com.novelsMDW.Novel.requests.CategoryRequest;
-import jakarta.persistence.CollectionTable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/category")
@@ -31,4 +32,8 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
+    @GetMapping("/all")
+    public List<Category> getAllCategories(){
+        return categoryService.getAllCategories();
+    }
 }
