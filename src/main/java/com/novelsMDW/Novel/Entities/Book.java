@@ -25,10 +25,14 @@ public class Book {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryId")
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     @JsonBackReference
-    private Category category;
+    private Set<Category> categories = new HashSet<>();
 
     private String description;
 
