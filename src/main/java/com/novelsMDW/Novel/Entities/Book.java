@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -53,6 +55,9 @@ public class Book {
     @CollectionTable(name = "libraries", joinColumns = @JoinColumn(name = "author_id"))
     @Column(name = "libraries")
     private Set<String> libraries = new HashSet<>();
+
+    @OneToMany(mappedBy = "book")
+    private List<Reviews> reviews = new ArrayList<>();
 
     @Transient
     private int bookAge;
