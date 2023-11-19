@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,10 +27,14 @@ public class Book {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryId")
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     @JsonBackReference
-    private Category category;
+    private Set<Category> categories = new HashSet<>();
 
     private String description;
 
@@ -49,6 +55,9 @@ public class Book {
     @CollectionTable(name = "libraries", joinColumns = @JoinColumn(name = "author_id"))
     @Column(name = "libraries")
     private Set<String> libraries = new HashSet<>();
+
+    @OneToMany(mappedBy = "book")
+    private List<Reviews> reviews = new ArrayList<>();
 
     @Transient
     private int bookAge;

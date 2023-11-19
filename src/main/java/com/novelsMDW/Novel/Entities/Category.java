@@ -25,7 +25,7 @@ public class Category {
 
     private String description;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JsonManagedReference
     private List<Book> books;
 }
