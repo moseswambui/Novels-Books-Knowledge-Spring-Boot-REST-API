@@ -1,4 +1,5 @@
 package com.novelsMDW.Novel.Entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,10 +26,12 @@ public class Reviews {
 
     @ManyToOne
     @JoinColumn(name = "user_profile_id")
+    @JsonBackReference
     private UserProfile userProfile;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonBackReference(value = "user-reviews")
     private Book book;
 
 }

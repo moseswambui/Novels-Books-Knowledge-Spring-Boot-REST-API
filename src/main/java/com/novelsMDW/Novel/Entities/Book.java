@@ -57,6 +57,7 @@ public class Book {
     private Set<String> libraries = new HashSet<>();
 
     @OneToMany(mappedBy = "book")
+    @JsonManagedReference
     private List<Reviews> reviews = new ArrayList<>();
 
     @Transient
