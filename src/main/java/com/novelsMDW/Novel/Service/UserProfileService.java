@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserProfileService {
@@ -29,6 +31,17 @@ public class UserProfileService {
 
         return savedUserProfile;
     }
+    public UserProfile getUserProfileById(Long id){
+        UserProfile userProfile = userProfileRepository.findById(id).get();
+        return userProfile;
+    }
 
-    
+    public void deleteUserProfile(Long id){
+        UserProfile userProfile = userProfileRepository.findById(id).get();
+        userProfileRepository.delete(userProfile);
+    }
+
+    public List<UserProfile> getAllUserProfiles(){
+        return userProfileRepository.findAll();
+    }
 }
