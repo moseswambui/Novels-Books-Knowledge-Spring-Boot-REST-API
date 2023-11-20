@@ -23,8 +23,9 @@ public class BookService {
     private AuthorRepository authorRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     public Book addBook(BookRequest bookRequest) {
