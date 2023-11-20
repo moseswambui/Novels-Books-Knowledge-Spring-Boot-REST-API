@@ -14,5 +14,5 @@ public class UserProfileRequest {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Reviews reviews;
+    //private Reviews reviews;
 }

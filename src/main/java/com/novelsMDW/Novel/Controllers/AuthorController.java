@@ -1,6 +1,7 @@
 package com.novelsMDW.Novel.Controllers;
 
 import com.novelsMDW.Novel.Entities.Author;
+import com.novelsMDW.Novel.Entities.Book;
 import com.novelsMDW.Novel.Service.AuthorService;
 import com.novelsMDW.Novel.requests.AuthorRequest;
 import lombok.RequiredArgsConstructor;
@@ -49,5 +50,11 @@ public class AuthorController {
     @GetMapping("/all")
     public List<Author> getAllAuthors(){
         return authorService.getAllAuthors();
+    }
+
+    @GetMapping("/{authorId}/books")
+    public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable Long authorId){
+        List<Book> books = authorService.getBooksByAuthorId(authorId);
+        return ResponseEntity.ok(books);
     }
 }

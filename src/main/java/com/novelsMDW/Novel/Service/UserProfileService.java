@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserProfileService {
-
+    @Autowired
     private UserProfileRepository userProfileRepository;
 
     @Autowired
@@ -43,5 +43,12 @@ public class UserProfileService {
 
     public List<UserProfile> getAllUserProfiles(){
         return userProfileRepository.findAll();
+    }
+
+    /*
+    SOLVING N + 1 problem
+     */
+    public List<UserProfile> getAllUserProfilesWithReviews() {
+        return userProfileRepository.findAllUserProfilesWithReviews();
     }
 }

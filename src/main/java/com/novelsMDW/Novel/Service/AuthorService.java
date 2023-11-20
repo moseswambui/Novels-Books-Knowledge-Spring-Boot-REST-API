@@ -1,6 +1,7 @@
 package com.novelsMDW.Novel.Service;
 
 import com.novelsMDW.Novel.Entities.Author;
+import com.novelsMDW.Novel.Entities.Book;
 import com.novelsMDW.Novel.Repositories.AuthorRepository;
 import com.novelsMDW.Novel.requests.AuthorRequest;
 import com.novelsMDW.Novel.requests.CategoryRequest;
@@ -48,5 +49,9 @@ public class AuthorService {
 
     public List<Author> getAllAuthors(){
         return authorRepository.findAll();
+    }
+
+    public List<Book> getBooksByAuthorId(Long authorId){
+        return authorRepository.findByAuthorId(authorId);
     }
 }

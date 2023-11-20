@@ -2,7 +2,9 @@ package com.novelsMDW.Novel.Service;
 
 
 import com.novelsMDW.Novel.Entities.Reviews;
+import com.novelsMDW.Novel.Repositories.BookRepository;
 import com.novelsMDW.Novel.Repositories.ReviewsRepository;
+import com.novelsMDW.Novel.Repositories.UserProfileRepository;
 import com.novelsMDW.Novel.requests.ReviewsRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,11 @@ public class ReviewsService {
     private ReviewsRepository reviewsRepository;
 
     @Autowired
+    private UserProfileRepository userProfileRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
+    @Autowired
     public ReviewsService(ReviewsRepository reviewsRepository){
         this.reviewsRepository = reviewsRepository;
     }
@@ -26,8 +33,10 @@ public class ReviewsService {
 
         reviews.setReviewDate(reviewsRequest.getReviewDate());
         reviews.setDescription(reviewsRequest.getDescription());
-        reviews.setUserProfile(reviewsRequest.getUserProfile());
-        reviews.setBook(reviewsRequest.getBook());
+        reviews.setUserProfile(userProfileRepository.findById(reviewsRequest.getProfileId()).orElseThrow(() ->
+                new RuntimeException("User Profile Not Found")));
+        reviews.setBook(bookRepository.findById(reviewsRequest.getBookId()).orElseThrow(() ->
+                new RuntimeException("Book Not Found")));
 
         Reviews savedReviews = reviewsRepository.save(reviews);
 
@@ -45,5 +54,9 @@ public class ReviewsService {
 
     public List<Reviews> getAllReviews(){
         return reviewsRepository.findAll();
+    }
+
+    public List<Reviews> getAllReviewsWithUserProfileAndBook() {
+        return reviewsRepository.findAllWithUserProfileAndBook();
     }
 }

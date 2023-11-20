@@ -1,5 +1,6 @@
 package com.novelsMDW.Novel.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class UserProfile {
 
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "userProfile")
+    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.PERSIST)
+    @JsonManagedReference(value = "user-reviews")
     private List<Reviews> reviews = new ArrayList<>();
 }
