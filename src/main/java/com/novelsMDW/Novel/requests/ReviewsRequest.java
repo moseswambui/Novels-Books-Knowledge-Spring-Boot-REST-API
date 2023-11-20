@@ -15,6 +15,6 @@ public class ReviewsRequest {
 
     private Date reviewDate;
     private String description;
-    private UserProfile userProfile;
-    private Book book;
+    private Long profileId;
+    private Long bookId;
 }

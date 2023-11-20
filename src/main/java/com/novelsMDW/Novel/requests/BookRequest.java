@@ -21,7 +21,7 @@ public class BookRequest {
     private String language;
     private Date publishDate;
     private int page;
-    private Author author;
-    private Category category;
+    private Long authorId;
+    private Long categoryId;
     private String library;
 }

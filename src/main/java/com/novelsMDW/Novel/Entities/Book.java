@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -57,9 +60,26 @@ public class Book {
     private Set<String> libraries = new HashSet<>();
 
     @OneToMany(mappedBy = "book")
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-reviews")
     private List<Reviews> reviews = new ArrayList<>();
 
     @Transient
     private int bookAge;
+
+    /*
+    public int getBookAge(){
+        if (publishDate != null){
+            LocalDate currentDate = LocalDate.now();
+
+            LocalDate publishLocalDate = publishDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            Duration duration = Duration.between(publishLocalDate.atStartOfDay(), currentDate.atStartOfDay());
+
+            return (int) duration.toDays() / 365;
+        } else {
+            return 0;
+        }
+    }
+
+     */
 }

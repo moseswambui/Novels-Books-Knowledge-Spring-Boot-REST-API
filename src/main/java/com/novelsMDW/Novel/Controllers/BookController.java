@@ -5,6 +5,8 @@ import com.novelsMDW.Novel.Service.BookService;
 import com.novelsMDW.Novel.requests.BookRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +44,20 @@ public class BookController {
         return  bookService.findBooksByName(name);
     }
 
+    @GetMapping("/with-reviews")
+    public List<Book> getAllBooksWithReviews() {
+        return bookService.getAllBooksWithReviews();
+    }
+
+    @GetMapping("allWithReviewsAndUsers")
+    public ResponseEntity<List<Book>> getAllBooksWithReviewsAndUsers(){
+        List<Book> books = bookService.getAllBooksWithReviewsAndUsers();
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    @GetMapping("/with-categories")
+    public ResponseEntity<List<Book>> getAllBooksWithCategories(){
+        List<Book> books = bookService.getAllBooksWithCategories();
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
 }

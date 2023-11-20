@@ -15,6 +15,4 @@ public class AuthorRequest {
     private String email;
     private String biography;
     private Date birthDate;
-
-
 }

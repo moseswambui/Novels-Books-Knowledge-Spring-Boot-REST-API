@@ -38,4 +38,8 @@ public class ReviewsController {
     public List<Reviews> getAllReviews(){
         return reviewsService.getAllReviews();
     }
+    @GetMapping("/with-user-profile-and-book")
+    public List<Reviews> getAllReviewsWithUserProfileAndBook() {
+        return reviewsService.getAllReviewsWithUserProfileAndBook();
+    }
 }

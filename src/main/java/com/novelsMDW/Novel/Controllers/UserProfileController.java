@@ -37,4 +37,9 @@ public class UserProfileController {
     public List<UserProfile> getAllUserProfiles(){
         return userProfileService.getAllUserProfiles();
     }
+
+    @GetMapping("/with-reviews")
+    public List<UserProfile> getAllUserProfilesWithReviews() {
+        return userProfileService.getAllUserProfilesWithReviews();
+    }
 }
