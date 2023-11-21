@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +23,6 @@ public class BookRequest {
     private Date publishDate;
     private int page;
     private Long authorId;
-    private Long categoryId;
+    private List<Long> categories;
     private String library;
 }
