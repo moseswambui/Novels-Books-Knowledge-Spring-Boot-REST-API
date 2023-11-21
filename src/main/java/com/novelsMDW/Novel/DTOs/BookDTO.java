@@ -24,4 +24,7 @@ public class BookDTO {
     private Set<String> libraries;
     private List<Long> reviewIds;
     private int bookAge;
+
+    public BookDTO(Long bookId, String name) {
+    }
 }

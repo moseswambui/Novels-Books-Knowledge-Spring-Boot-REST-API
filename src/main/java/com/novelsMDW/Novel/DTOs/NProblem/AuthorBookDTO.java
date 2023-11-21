@@ -1,20 +1,19 @@
 package com.novelsMDW.Novel.DTOs.NProblem;
 
 import com.novelsMDW.Novel.DTOs.BookDTO;
-import com.novelsMDW.Novel.DTOs.ReviewsDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserReviewsDTO {
-    private Long userId;
-    private String userName;
-    private List<ReviewsDTO> reviews;
-    //private BookDTO book;
+public class AuthorBookDTO {
+    private Long authorId;
+    private String name;
+    private String email;
+    private String biography;
+    private List<BookDTO> books; // Updated to contain BookDTOs instead of bookIds
 }
