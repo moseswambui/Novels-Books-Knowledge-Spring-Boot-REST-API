@@ -1,8 +1,6 @@
 package com.novelsMDW.Novel.Controllers.NProblem;
 
-import com.novelsMDW.Novel.DTOs.AuthorDTO;
 import com.novelsMDW.Novel.DTOs.NProblem.AuthorBookDTO;
-import com.novelsMDW.Novel.Service.AuthorService;
 import com.novelsMDW.Novel.Service.NProblem.AuthorBookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

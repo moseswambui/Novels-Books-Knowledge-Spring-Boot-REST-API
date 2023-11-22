@@ -1,12 +1,10 @@
 package com.novelsMDW.Novel.DTOs.NProblem;
 
-import com.novelsMDW.Novel.DTOs.BookDTO;
 import com.novelsMDW.Novel.DTOs.ReviewsDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.util.List;
 
 @Data

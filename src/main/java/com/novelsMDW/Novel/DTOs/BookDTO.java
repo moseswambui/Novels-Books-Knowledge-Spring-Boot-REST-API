@@ -25,6 +25,5 @@ public class BookDTO {
     private List<Long> reviewIds;
     private int bookAge;
 
-    public BookDTO(Long bookId, String name) {
-    }
+
 }

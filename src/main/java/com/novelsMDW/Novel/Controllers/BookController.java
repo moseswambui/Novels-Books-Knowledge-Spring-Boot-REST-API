@@ -5,7 +5,6 @@ import com.novelsMDW.Novel.Entities.Book;
 import com.novelsMDW.Novel.Service.BookService;
 import com.novelsMDW.Novel.requests.BookRequest;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

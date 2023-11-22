@@ -1,6 +1,5 @@
 package com.novelsMDW.Novel.DTOs.NProblem;
 
-import com.novelsMDW.Novel.DTOs.BookDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
