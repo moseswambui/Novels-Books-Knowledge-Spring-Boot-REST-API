@@ -2,6 +2,7 @@ package com.novelsMDW.Novel.Service.NProblem;
 
 import com.novelsMDW.Novel.DTOs.BookDTO;
 import com.novelsMDW.Novel.DTOs.NProblem.AuthorBookDTO;
+import com.novelsMDW.Novel.DTOs.NProblem.BookListDTO;
 import com.novelsMDW.Novel.Entities.Author;
 import com.novelsMDW.Novel.Entities.Book;
 import com.novelsMDW.Novel.Repositories.AuthorRepository;
@@ -26,8 +27,8 @@ public class AuthorBookService {
 
         List<Book> books = bookRepository.findAllByAuthor(author);
 
-        List<BookDTO> bookDTOs = books.stream()
-                .map(book -> new BookDTO(book.getBookId(), book.getName()))
+        List<BookListDTO> bookListDTOs = books.stream()
+                .map(book -> new BookListDTO(book.getBookId(), book.getName(),book.getDescription()))
                 .collect(Collectors.toList());
 
         return new AuthorBookDTO(
@@ -35,7 +36,7 @@ public class AuthorBookService {
                 author.getName(),
                 author.getEmail(),
                 author.getBiography(),
-                bookDTOs
+                bookListDTOs
         );
     }
 }

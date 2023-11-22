@@ -15,5 +15,5 @@ public class AuthorBookDTO {
     private String name;
     private String email;
     private String biography;
-    private List<BookDTO> books; // Updated to contain BookDTOs instead of bookIds
+    private List<BookListDTO> books; // Updated to contain BookDTOs instead of bookIds
 }

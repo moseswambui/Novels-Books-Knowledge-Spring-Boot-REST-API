@@ -13,6 +13,6 @@ import java.util.Set;
 public class CategoryDTO {
     private Long categoryId;
     private String name;
-    private String description;
-    private List<Long> bookIds;
+    //private String description;
+    //private List<Long> bookIds;
 }
