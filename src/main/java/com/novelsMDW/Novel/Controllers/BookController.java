@@ -1,8 +1,10 @@
 package com.novelsMDW.Novel.Controllers;
 
+import com.novelsMDW.Novel.DTOs.BookDTO;
 import com.novelsMDW.Novel.Entities.Book;
 import com.novelsMDW.Novel.Service.BookService;
 import com.novelsMDW.Novel.requests.BookRequest;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/books")
 @RequiredArgsConstructor
+@AllArgsConstructor
+
 public class BookController {
 
     @Autowired
@@ -59,5 +63,13 @@ public class BookController {
     public ResponseEntity<List<Book>> getAllBooksWithCategories(){
         List<Book> books = bookService.getAllBooksWithCategories();
         return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    //WITH DTOs - PRESENTATION Layer
+
+    @GetMapping("/with-categories-and-author-info")
+    public ResponseEntity<List<BookDTO>> getAllBooksWithCategoriesAndAuthorInfo(){
+        List<BookDTO> bookDTOs = bookService.getAllBooksWithCategoriesAndAuthorInfo();
+        return new ResponseEntity<>(bookDTOs, HttpStatus.OK);
     }
 }

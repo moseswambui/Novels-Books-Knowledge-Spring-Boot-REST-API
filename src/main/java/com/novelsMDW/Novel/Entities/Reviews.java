@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.Duration;
+import java.time.Instant;
 
 @Entity
 @Table(name = "reviews")
@@ -34,4 +36,18 @@ public class Reviews {
     @JsonBackReference(value = "user-reviews")
     private Book book;
 
+    @Transient
+    private int reviewAge;
+
+    public void calculateBookAge(){
+        if (reviewDate != null){
+            Instant reviewInstant = reviewDate.toInstant();
+            Instant currentInstant = Instant.now();
+            Duration duration = Duration.between(reviewInstant, currentInstant);
+
+            Long days = duration.toDays();
+
+            reviewAge = (int)(days / 365);
+        }
+    }
 }

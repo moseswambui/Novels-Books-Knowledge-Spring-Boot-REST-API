@@ -1,6 +1,8 @@
 package com.novelsMDW.Novel.Repositories;
 
 import com.novelsMDW.Novel.Entities.Reviews;
+import com.novelsMDW.Novel.Entities.UserProfile;
+import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,4 +19,6 @@ public interface ReviewsRepository extends JpaRepository<Reviews, Long> {
      */
     @Query("SELECT r FROM Reviews r JOIN FETCH r.userProfile JOIN FETCH r.book")
     List<Reviews> findAllWithUserProfileAndBook();
+
+    List<Reviews> findAllByUserProfile(UserProfile userProfile);
 }

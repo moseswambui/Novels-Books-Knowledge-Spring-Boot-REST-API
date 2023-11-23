@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.beans.Transient;
 import java.sql.Date;
 
 @Data
@@ -17,4 +18,6 @@ public class ReviewsRequest {
     private String description;
     private Long profileId;
     private Long bookId;
+
+
 }

@@ -1,13 +1,11 @@
 package com.novelsMDW.Novel.requests;
 
-import com.novelsMDW.Novel.Entities.Author;
-import com.novelsMDW.Novel.Entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +20,6 @@ public class BookRequest {
     private Date publishDate;
     private int page;
     private Long authorId;
-    private Long categoryId;
+    private List<Long> categories;
     private String library;
 }
